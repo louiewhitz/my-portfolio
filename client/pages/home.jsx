@@ -1,10 +1,11 @@
-import React from 'react';
-import HelloWorld from '../components/hello-world';
+// import React from 'react';
 
-export default function Home(props) {
-  return (
-    <div>
-      <HelloWorld />
-    </div>
-  );
-}
+// import Projects from '../components/switch-status';
+
+// export default function Home(props) {
+//   return (
+//     <div>
+//       <Projects />
+//     </div>
+//   );
+// }

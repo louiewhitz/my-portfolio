@@ -22,6 +22,7 @@ export default function App() {
   const contextValue = { user };
 
   function renderRoute() {
+    setUser(user);
     const { path } = curRoute;
     let page = null;
 

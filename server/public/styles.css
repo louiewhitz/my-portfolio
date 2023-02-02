@@ -1117,3 +1117,13 @@ section .container {
         transform: translateX(-50%);
     }
 }
+
+li {
+    
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+
+}
