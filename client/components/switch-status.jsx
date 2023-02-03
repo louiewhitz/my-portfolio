@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import '../server/public/TypeWriter.css';
+import Typewriter from 'typewriter-effect/dist/core';
 
 const TypeWriter = () => {
   const phrases = ['a Software Engineer', 'Louisa Whitaker'];
