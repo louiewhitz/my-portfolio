@@ -11,7 +11,8 @@
     "vscode": {
       "extensions": [
 		"thebearingedge.lfz-code",
-		"jeffersonlicet.snipped"
+		"jeffersonlicet.snipped",
+		"burkeholland.simple-react-snippets"
 	]
     }
   },

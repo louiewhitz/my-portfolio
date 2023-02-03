@@ -1,49 +1,33 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import ParseRoute from './lib/parse-route';
+import { Routes, Route, Outlet, Link, BrowserRouter as Router } from 'react-router-dom';
 import AppContext from './lib/app-context';
-import Redirect from './lib/redirect';
-import Home from './pages/home.jsx';
+import Home from './components/home.jsx';
 import Nav from './components/nav';
-import PageContainer from './pages/page-container';
+import ProjectsPage from './pages/projects';
+import parseRoute from './lib/parse-route';
 
 export default function App() {
-
-  const [curRoute, setRoute] = useState(ParseRoute(window.location.hash));
   const [user, setUser] = useState(null);
+  const [curRoute, setRoute] = useState(parseRoute(window.location.hash));
   useEffect(() => {
     window.addEventListener('hashchange', () => {
-      const newRoute = ParseRoute(window.location.hash);
+      const newRoute = parseRoute(window.location.hash);
       setRoute(newRoute);
     });
 
   }, []);
 
-  const contextValue = { user };
-
-  function renderRoute() {
-    setUser(user);
-    const { path } = curRoute;
-    let page = null;
-
-    if (user) {
-      if (path === 'home' || path === '') {
-        page = <Home />;
-      }
-    }
-
-    return (
-      <>
-        <Nav />
-        {page}
-
-      </>
-    );
-  }
+  const contextValue = { user, curRoute };
 
   return (
     <AppContext.Provider value={contextValue}>
-      {renderRoute()}
+      <Router>
+        <Nav />
+        <Routes>
+          <Route exact path="/" component={Home} />
+          <Route path="/projects" component={ProjectsPage} />
+        </Routes>
+      </Router>
     </AppContext.Provider>
   );
 }

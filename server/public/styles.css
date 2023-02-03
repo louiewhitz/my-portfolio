@@ -385,7 +385,7 @@ section .container {
 .about-me .content h3 {
     font-weight: 700;
     font-size: 26px;
-    color: #1c7d32;
+    color: #8cd49d;
 }
 
 .about-me .content ul {
@@ -400,7 +400,7 @@ section .container {
 .about-me .content ul i {
     font-size: 20px;
     padding-right: 2px;
-    color: #1c7d32;
+    color: #b0e3bc;
 }
 
 .about-me .content p:last-child {
@@ -1126,4 +1126,48 @@ li {
 a {
     text-decoration: none;
 
+}
+
+.TypeWriter {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.typing span:after {
+    content: "|";
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.phrase {
+    animation: reveal-text 3s ease-in-out;
+    color: white;
+}
+
+@keyframes reveal-text {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.typep {
+    color: white !important;
 }
