@@ -1,0 +1,38 @@
+.TypeWriter {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.typing span:after {
+    content: "|";
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.phrase {
+    animation: reveal-text 3s ease-in-out;
+}
+
+@keyframes reveal-text {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
