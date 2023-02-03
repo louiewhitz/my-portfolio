@@ -2,17 +2,17 @@ import React from 'react';
 import TypeWriter from './switch-status';
 import AppContext from '../lib/app-context';
 
-
-export default function Home(props) {
-  console.log(props);
-  return (
-    <div className='container'>
-      <div>
-        <TypeWriter />
+export default class Home extends React.Component {
+  render() {
+    return (
+      <div className='container'>
+        <div className='text-white'>
+          <TypeWriter />
+        </div>
       </div>
-    </div>
 
-  );
+    );
+  }
 }
 
 Home.contextType = AppContext;

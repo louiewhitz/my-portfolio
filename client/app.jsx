@@ -1,33 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Outlet, Link, BrowserRouter as Router } from 'react-router-dom';
+import React from 'react';
+
 import AppContext from './lib/app-context';
 import Home from './components/home.jsx';
 import Nav from './components/nav';
 import ProjectsPage from './pages/projects';
 import parseRoute from './lib/parse-route';
+import PageContainer from './pages/page-container';
 
-export default function App() {
-  const [user, setUser] = useState(null);
-  const [curRoute, setRoute] = useState(parseRoute(window.location.hash));
-  useEffect(() => {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+      route: parseRoute(window.location.hash)
+    };
+
+  }
+
+  componentDidMount() {
+
     window.addEventListener('hashchange', () => {
-      const newRoute = parseRoute(window.location.hash);
-      setRoute(newRoute);
+      const newRoute = window.location.hash;
+      const parsedRoute = parseRoute(newRoute);
+      this.setState({ route: parsedRoute });
     });
 
-  }, []);
+  }
 
-  const contextValue = { user, curRoute };
+  renderPage() {
+    const { route } = this.state;
+    if (route.path === '') {
+      return <Home />;
+    } else if (route.path === 'projects') {
+      return <ProjectsPage />;
+    }
+  }
 
-  return (
-    <AppContext.Provider value={contextValue}>
-      <Router>
-        <Nav />
-        <Routes>
-          <Route exact path="/" component={Home} />
-          <Route path="/projects" component={ProjectsPage} />
-        </Routes>
-      </Router>
-    </AppContext.Provider>
-  );
+  render() {
+
+    const { route } = this.state;
+
+    const contextValue = { route };
+    return (
+      <AppContext.Provider value={contextValue}>
+        <>
+          <Nav />
+          <PageContainer>{this.renderPage()}</PageContainer>
+        </>
+      </AppContext.Provider>
+
+    );
+  }
 }
